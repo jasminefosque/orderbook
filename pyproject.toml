@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "orderbook"
 version = "0.1.0"
-description = "Institutional-grade market structure analytics engine for liquidity monitoring and price discovery"
+description = "Market microstructure and liquidity analytics laboratory for institutional-grade metrics"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Jasmine Fosque"}
@@ -18,6 +18,7 @@ dependencies = [
     "pyarrow>=12.0.0",
     "numpy>=1.24.0",
     "scipy>=1.10.0",
+    "click>=8.0.0",
 ]
 
 [project.optional-dependencies]
@@ -27,13 +28,19 @@ dev = [
     "ruff>=0.1.0",
 ]
 
+[project.scripts]
+orderbook = "orderbook.cli.main:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.black]
 line-length = 100
-target-version = ['py39']
+target-version = ['py310']
 
 [tool.ruff]
 line-length = 100
-target-version = "py39"
+target-version = "py310"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
